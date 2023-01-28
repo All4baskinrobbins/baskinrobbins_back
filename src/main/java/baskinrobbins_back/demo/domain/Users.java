@@ -5,6 +5,8 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 
+import org.apache.catalina.User;
+
 
 
 
@@ -91,4 +93,8 @@ public class Users {
 	public void setPhone_number(String phone_number) {
 		this.phone_number = phone_number;
 	}
+
+    public String toString() {
+        return "id : " + getId() + "\tname : " + getName() + "\tuser_id : " + getUser_id() + "\tuser_pw : " + getUser_pw() + "\temail : " + getEmail() + "\tphone_number : " + getPhone_number();
+    }
 }

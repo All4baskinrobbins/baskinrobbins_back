@@ -19,7 +19,11 @@ public class UsersService {
 
     public void signUp(String name, String user_id, String user_pw, Long birth, String email, String phone_number){
         usersRepository.signUp(name, user_id, user_pw, birth, email, phone_number);
-        
+    }
+
+    public Users login(String user_id, String user_pw){
+        Users users = usersRepository.login(user_id, user_pw);
+        return users;
     }
 
 

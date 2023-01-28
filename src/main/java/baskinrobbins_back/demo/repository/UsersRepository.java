@@ -21,5 +21,11 @@ public interface UsersRepository extends JpaRepository<Users, Long>{
 
     public List<Users> findAll();
 
+    @Query(value = "SELECT user_id FROM users WHERE user_id = :user_id", nativeQuery = true)
+    public String existUser(@Param("user_id")String user_id);
+
+
+    @Query(value = "SELECT * FROM users WHERE user_id = :user_id AND user_pw = :user_pw", nativeQuery = true)
+    public Users login(@Param("user_id")String user_id, @Param("user_pw")String user_pw);
 
 }

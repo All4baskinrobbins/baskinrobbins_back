@@ -45,6 +45,4 @@ public class Product_tag {
     public void setTag_id(Long tag_id) {
         this.tag_id = tag_id;
     }
-
-
 }

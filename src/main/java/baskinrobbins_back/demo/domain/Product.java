@@ -13,6 +13,7 @@ public class Product {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
+
     private String ko_name;
     private String en_name;
     private int category_id;

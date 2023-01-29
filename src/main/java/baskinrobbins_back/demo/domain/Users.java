@@ -4,6 +4,7 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.validation.constraints.NotNull;
 
 import org.apache.catalina.User;
 
@@ -17,11 +18,17 @@ public class Users {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
+	@NotNull
     private String name;
+	@NotNull
     private String user_id;
+	@NotNull
     private String user_pw;
+	@NotNull
     private Long birth;
+	@NotNull
     private String email;
+	@NotNull
     private String phone_number;
 
     public Users(){

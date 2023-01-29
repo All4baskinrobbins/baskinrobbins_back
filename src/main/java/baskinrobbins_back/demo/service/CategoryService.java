@@ -2,7 +2,6 @@ package baskinrobbins_back.demo.service;
 
 import java.util.List;
 
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import baskinrobbins_back.demo.domain.Category;
@@ -12,7 +11,6 @@ import baskinrobbins_back.demo.repository.CategoryRepository;
 public class CategoryService {
     private final CategoryRepository categoryRepository;
 
-    @Autowired
     public CategoryService(CategoryRepository categoryRepository){
         this.categoryRepository = categoryRepository;
     }

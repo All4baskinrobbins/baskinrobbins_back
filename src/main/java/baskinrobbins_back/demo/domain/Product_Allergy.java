@@ -15,16 +15,16 @@ public class Product_Allergy {
     @NotNull
     private Long product_id;
     @NotNull
-    private Long allergy_properties;
+    private Long allergy_id;
 
     public Product_Allergy(){
 
     }
 
-    public Product_Allergy(Long id, Long product_id, Long allergy_properties){
+    public Product_Allergy(Long id, Long product_id, Long allergy_id){
         this.id = id;
         this.product_id = product_id;
-        this.allergy_properties = allergy_properties;
+        this.allergy_id = allergy_id;
     }
 
     public Long getId() {
@@ -43,12 +43,12 @@ public class Product_Allergy {
         this.product_id = product_id;
     }
 
-    public Long getAllergy_properties() {
-        return this.allergy_properties;
+    public Long getAllergy_id() {
+        return this.allergy_id;
     }
 
-    public void setAllergy_properties(Long allergy_properties) {
-        this.allergy_properties = allergy_properties;
+    public void setAllergy_id(Long allergy_id) {
+        this.allergy_id = allergy_id;
     }
 
 }

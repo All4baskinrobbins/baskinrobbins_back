@@ -6,7 +6,16 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.validation.constraints.NotNull;
 
+import lombok.AllArgsConstructor;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
+
 @Entity
+@Getter
+@Setter
+@NoArgsConstructor
+@AllArgsConstructor
 public class Product_Allergy {
     
     @Id
@@ -16,39 +25,5 @@ public class Product_Allergy {
     private Long product_id;
     @NotNull
     private Long allergy_id;
-
-    public Product_Allergy(){
-
-    }
-
-    public Product_Allergy(Long id, Long product_id, Long allergy_id){
-        this.id = id;
-        this.product_id = product_id;
-        this.allergy_id = allergy_id;
-    }
-
-    public Long getId() {
-        return this.id;
-    }
-
-    public void setId(Long id) {
-        this.id = id;
-    }
-
-    public Long getProduct_id() {
-        return this.product_id;
-    }
-
-    public void setProduct_id(Long product_id) {
-        this.product_id = product_id;
-    }
-
-    public Long getAllergy_id() {
-        return this.allergy_id;
-    }
-
-    public void setAllergy_id(Long allergy_id) {
-        this.allergy_id = allergy_id;
-    }
 
 }

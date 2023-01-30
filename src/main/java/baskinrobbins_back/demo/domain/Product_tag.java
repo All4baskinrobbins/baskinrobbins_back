@@ -6,7 +6,16 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.validation.constraints.NotNull;
 
+import lombok.AllArgsConstructor;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
+
 @Entity
+@Getter
+@Setter
+@NoArgsConstructor
+@AllArgsConstructor
 public class Product_tag {
     
     @Id
@@ -17,37 +26,4 @@ public class Product_tag {
     @NotNull
     private Long tag_id;
 
-    public Product_tag() {
-
-    }
-
-    public Product_tag(Long id, Long product_id, Long tag_id) {
-        this.id = id;
-        this.product_id = product_id;
-        this.tag_id = tag_id;
-    }
-
-    public Long getId() {
-        return this.id;
-    }
-
-    public void setId(Long id) {
-        this.id = id;
-    }
-
-    public Long getProduct_id() {
-        return this.product_id;
-    }
-
-    public void setProduct_id(Long product_id) {
-        this.product_id = product_id;
-    }
-
-    public Long getTag_id() {
-        return this.tag_id;
-    }
-
-    public void setTag_id(Long tag_id) {
-        this.tag_id = tag_id;
-    }
 }

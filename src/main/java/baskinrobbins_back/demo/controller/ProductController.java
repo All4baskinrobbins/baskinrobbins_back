@@ -25,7 +25,7 @@ public class ProductController {
 
     @PostMapping("")
     public String createProduct(@RequestBody Product product) {
-        productService.createProduct(product.getKo_name(), product.getEn_name(), product.getCategory_id(), product.getDescription(), product.getKcal(), product.getSalt(), product.getSugar(), product.getFat(), product.getProtein(), product.getCafein(), product.getImg_url());
+        productService.createProduct(product.getKo_name(), product.getEn_name(), product.getCategory_id(), product.getDescription(), product.getKcal(), product.getSalt(), product.getSugar(), product.getFat(), product.getProtein(), product.getCaffeine(), product.getImg_url());
         return "CREATE_DONE";
     }
     

@@ -14,7 +14,7 @@ INSERT INTO Product_Tag (product_id, tag_id) VALUES (1, 1), (1, 2), (2, 3), (3, 
 INSERT INTO product_Allergy (product_id, allergy_id) VALUES (1,1), (1, 4), (1, 5), (1, 6), (2, 2), (2, 4), (2, 5), (3, 2), (3, 3), (3, 4), (3, 5), (4, 2), (4, 5),
 (5, 7), (6, 5), (7, 5), (8, 2), (8, 4), (8, 5), (9, 5), (9, 6), (10, 2), (10, 4), (10, 5), (11, 5), (12, 2), (12, 5), (13, 2), (13, 5), (14, 2), (14, 5),
 (15, 2), (15, 3), (15, 5), (16, 7), (17, 7), (18, 1), (18, 2), (18, 4), (18, 5), (19, 5), (20, 5), (21, 2), (21, 5), (22, 2), (22, 5), (23, 2), (23, 5), (23, 6),
-(24,  7), (25, 7), (28, 7), (29, 7), (30, 7), (31, 7), (32, 7), (33, 7), (34, 7), (35, 7);
+(24,  7), (25, 7), (26, 7), (27, 7), (28, 7), (29, 7), (30, 7), (31, 7), (32, 7), (33, 7), (34, 7), (35, 7);
 
 select
 	product.id,
@@ -57,3 +57,72 @@ select * from Tag_Properties;
 drop table Tag_properties;
 
 drop table Product_Tag;
+
+select * from product;
+
+SELECT
+	product.id,
+	product.ko_name,
+	product.en_name,
+	product.description,
+	product.kcal,
+	product.salt,
+	product.sugar,
+	product.fat,
+	product.protein,
+	product.caffeine,
+	product.img_url,
+	tag.tag_name,
+	allergy.allergy_name
+FROM
+	product
+LEFT JOIN (SELECT
+				product.id AS id,
+				json_agg(allergy_Properties.name) AS allergy_name
+		   FROM
+		   		product
+		   LEFT JOIN product_allergy ON product.id = product_allergy.product_id
+		   LEFT JOIN allergy_properties ON product_allergy.allergy_id = allergy_properties.id
+		   GROUP BY product.id) as allergy ON product.id = allergy.id
+LEFT JOIN (SELECT
+		  		product.id AS id,
+		  		json_agg(tag_properties.name) AS tag_name
+		  FROM
+		  		product
+		  LEFT JOIN product_tag ON product.id = product_tag.product_id
+		  LEFT JOIN tag_properties ON product_tag.tag_id = tag_properties.id
+		  GROUP BY product.id) as tag ON product.id = tag.id
+ORDER BY product.id;
+
+select * from product_tag;
+
+SELECT
+	p.id,
+	p.ko_name,
+	a.allergy_name,
+	t.tag_name
+FROM
+	product p
+LEFT JOIN (SELECT
+				p.id AS id,
+				json_agg(a.name) AS allergy_name
+		   FROM
+		   		product p
+		   LEFT JOIN product_allergy pa ON p.id = pa.product_id
+		   LEFT JOIN allergy_properties a ON pa.allergy_id = a.id
+		   GROUP BY p.id) as a ON p.id = a.id
+LEFT JOIN (SELECT
+		  		p.id AS id,
+		  		json_agg(t.name) AS tag_name
+		  FROM
+		  		product p
+		  LEFT JOIN product_tag pt ON p.id = pt.product_id
+		  LEFT JOIN tag_properties t ON pt.tag_id = t.id
+		  GROUP BY p.id) as t ON p.id = t.id
+ORDER BY
+	p.id;
+	
+SELECT p.id, p.ko_name, c.category_name FROM Product p LEFT JOIN Category c ON p.category_id = c.id
+ORDER BY p.id;
+
+select * from product;

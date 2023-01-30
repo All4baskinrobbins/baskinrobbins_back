@@ -6,7 +6,16 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.validation.constraints.NotNull;
 
+import lombok.AllArgsConstructor;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
+
 @Entity
+@Getter
+@Setter
+@NoArgsConstructor
+@AllArgsConstructor
 public class Category {
     
     @Id
@@ -14,31 +23,5 @@ public class Category {
     private Long id;
     @NotNull
     private String category_name;
-
-    public Category() {
-
-    }
-
-    public Category(Long id, String category_name) {
-        this.id = id;
-        this.category_name = category_name;
-    }
-
-    public Long getId() {
-        return this.id;
-    }
-
-    public void setId(Long id) {
-        this.id = id;
-    }
-
-    public String getCategory_name() {
-        return this.category_name;
-    }
-
-    public void setCategory_name(String category_name) {
-        this.category_name = category_name;
-    }
-
 
 }
